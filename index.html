@@ -433,7 +433,69 @@ footer p {
   min-height: 70px;
   margin: 15px 0;
 }
-                              </style>
+
+</style>
+  <style>
+#leaderboard {
+  background: #f0f5ff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.leader-container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.leader-container h2 {
+  color: #174c82;
+  font-size: 27px;
+}
+
+.leader-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.leader-tabs button {
+  flex: 1;
+  padding: 12px;
+  background: #1769aa;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.leader-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 10px;
+  margin: 10px 0;
+  background: #f1f5f9;
+  border-radius: 10px;
+  gap: 8px;
+}
+
+.leader-item strong {
+  color: #17233b;
+}
+
+.leader-item span {
+  color: #1769aa;
+}
+
+.leader-note {
+  color: #777;
+  font-size: 13px;
+  margin-top: 20px;
+}
+  </style>
 </head>
 
 <body>
@@ -634,6 +696,41 @@ document.getElementById("battleBtn").addEventListener("click", function() {
     "Online competition is coming soon! The multiplayer system will be built next.";
 });
 </script>
+  <section id="leaderboard">
+  <div class="leader-container">
+    <h2>🏆 Smart Learn Leaderboard</h2>
+    <p>Learn, compete and climb the rankings!</p>
+
+    <div class="leader-tabs">
+      <button onclick="showRanking('weekly')">Weekly</button>
+      <button onclick="showRanking('monthly')">Monthly</button>
+    </div>
+
+    <div class="leader-list">
+      <div class="leader-item">
+        <span>🥇</span>
+        <strong>Student One</strong>
+        <span>950 points</span>
+      </div>
+
+      <div class="leader-item">
+        <span>🥈</span>
+        <strong>Student Two</strong>
+        <span>870 points</span>
+      </div>
+
+      <div class="leader-item">
+        <span>🥉</span>
+        <strong>Student Three</strong>
+        <span>790 points</span>
+      </div>
+    </div>
+
+    <p class="leader-note">
+      Rankings will update when real student quiz scores are connected.
+    </p>
+  </div>
+  </section>
 <section id="smart-learn-ai">
   <div class="ai-container">
     <h2>🤖 Smart Learn AI</h2>
@@ -689,5 +786,53 @@ function sendAIQuestion() {
   document.getElementById("aiQuestion").value = "";
 }
 </script>
+  
+<script>
+/**
+ * @param {"weekly" | "monthly"} period
+ */
+function showRanking(period) {
+  const list = document.querySelector(".leader-list");
+
+  if (!list) return;
+
+  if (period === "weekly") {
+    list.innerHTML = `
+      <div class="leader-item">
+        <span>🥇</span>
+        <strong>Student One</strong>
+        <span>950 points</span>
+      </div>
+      <div class="leader-item">
+        <span>🥈</span>
+        <strong>Student Two</strong>
+        <span>870 points</span>
+      </div>
+      <div class="leader-item">
+        <span>🥉</span>
+        <strong>Student Three</strong>
+        <span>790 points</span>
+      </div>`;
+  } else if (period === "monthly") {
+    list.innerHTML = `
+      <div class="leader-item">
+        <span>🥇</span>
+        <strong>Student Four</strong>
+        <span>2500 points</span>
+      </div>
+      <div class="leader-item">
+        <span>🥈</span>
+        <strong>Student Five</strong>
+        <span>2200 points</span>
+      </div>
+      <div class="leader-item">
+        <span>🥉</span>
+        <strong>Student Six</strong>
+        <span>1900 points</span>
+      </div>`;
+  }
+}
+  </script>
+  
 </body>
 </html>
