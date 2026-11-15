@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b50">
+<title>Smart Learn - Online Education</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #182b45;
+  background: #f5f8fc;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+}
+
+header {
+  background: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 15px #00000010;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  color: #102b50;
+}
+
+.logo span {
+  color: #2582e9;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #2582e9;
+}
+
+.menu {
+  display: none;
+  font-size: 25px;
+  background: none;
+}
+
+.header-btn, .primary {
+  background: #2582e9;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.hero {
+  min-height: 500px;
+  background:
+    linear-gradient(90deg, #071d3beF, #123d69D9),
+    url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=85");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  color: white;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero small {
+  color: #82c0ff;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 7vw, 65px);
+  line-height: 1.15;
+  margin: 22px 0;
+}
+
+.hero h1 span {
+  color: #69b7ff;
+}
+
+.hero p {
+  max-width: 520px;
+  color: #e0eafa;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.secondary {
+  display: inline-block;
+  background: white;
+  color: #102b50;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.hero-label {
+  margin-top: 30px;
+  color: #c5d9ef;
+  font-size: 12px;
+}
+
+.section {
+  padding: 75px 7%;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #2582e9;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.section h2 {
+  font-size: 32px;
+  margin: 12px 0;
+}
+
+.section-intro {
+  color: #78879a;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  text-align: left;
+}
+
+.card {
+  border-radius: 17px;
+  padding: 28px;
+  min-height: 225px;
+  background: white;
+  border: 1px solid #e9eef5;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px #17385b15;
+}
+
+.card-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 21px;
+  margin: 8px 0;
+}
+
+.card p {
+  color: #738197;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.card a {
+  color: #2582e9;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.blue { background: #edf5ff; }
+.purple { background: #f5efff; }
+.orange { background: #fff5e9; }
+.green { background: #edfaf2; }
+
+.subject-section {
+  background: #edf3fa;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.subject {
+  background: white;
+  padding: 20px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #203c5c;
+  border: 1px solid #e2eaf3;
+}
+
+.subject:hover {
+  border-color: #2582e9;
+  color: #2582e9;
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #52657e;
+}
+
+.quiz {
+  background: #102b50;
+  color: white;
+}
+
+.quiz .section-intro {
+  color: #c3d4e7;
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.quiz-card {
+  background: white;
+  color: #182b45;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.quiz-card h3 {
+  margin: 12px 0;
+}
+
+.quiz-card p {
+  font-size: 13px;
+  color: #738197;
+  margin-bottom: 20px;
+}
+
+.community {
+  background:
+    linear-gradient(#102b50d9, #102b50eF),
+    url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80");
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+
+.community p {
+  max-width: 600px;
+  margin: 15px auto 25px;
+  color: #e0eafa;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.community .eyebrow {
+  color: #8fc6ff;
+}
+
+.cta {
+  background: #e6f1ff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.cta h2 {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: #718096;
+  margin-bottom: 22px;
+}
+
+footer {
+  background: #091d36;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 12px;
+  color: #bacbe0;
+  margin-top: 12px;
+}
+
+@media(max-width: 750px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .header-btn {
+    display: none;
+  }
+
+  .hero {
+    min-height: 460px;
+    padding: 65px 7%;
+  }
+
+  .cards, .quiz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subjects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section h2 {
+    font-size: 26px;
+  }
+}
+</style>
+<style>
+#smart-learn-ai {
+  background: linear-gradient(135deg, #101c3d, #174c82);
+  padding: 50px 20px;
+  color: white;
+  text-align: center;
+}
+
+.ai-container {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  color: #17233b;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.ai-container h2 {
+  color: #174c82;
+  font-size: 28px;
+}
+
+#aiSubject, #aiQuestion {
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#aiQuestion {
+  min-height: 100px;
+}
+
+.ai-container button {
+  background: #1769aa;
+  color: white;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+#aiChat {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  min-height: 70px;
+  margin: 15px 0;
+}
+                              </style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">SMART<span>LEARN</span></a>
+
+  <button class="menu" id="menuBtn">☰</button>
+
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#past">Past Questions</a>
+    <a href="#predicted">Predicted Questions</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#community">Community</a>
+  </nav>
+
+  <a href="#learning" class="header-btn">Get Started</a>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <small>YOUR ONLINE LEARNING PARTNER</small>
+
+    <h1>Learn Better.<br><span>Score Higher.</span></h1>
+
+    <p>
+      Prepare for WASSCE, practice examination questions,
+      challenge other students and build your academic confidence.
+    </p>
+
+    <a href="#learning" class="primary">Start Learning</a>
+    <a href="#past" class="secondary">Explore Questions</a>
+
+    <div class="hero-label">
+      LEARN • PRACTICE • COMPETE • SUCCEED
+    </div>
+  </div>
+</section>
+
+<section class="section" id="learning">
+  <span class="eyebrow">WELCOME TO SMART LEARN</span>
+  <h2>Everything You Need to Succeed</h2>
+  <p class="section-intro">
+    Your education, your goals, your success.
+    Choose a learning section below.
+  </p>
+
+  <div class="cards">
+
+    <article class="card blue" id="past">
+      <div class="card-icon">📚</div>
+      <span class="eyebrow">FREE & PREMIUM</span>
+      <h3>Past Questions</h3>
+      <p>
+        Access examination questions, practice different subjects
+        and improve your understanding.
+      </p>
+      <a href="#subjects">Explore Past Questions →</a>
+    </article>
+
+    <article class="card purple" id="predicted">
+      <div class="card-icon">🧠</div>
+      <span class="eyebrow">EXAM PREPARATION</span>
+      <h3>Predicted Questions</h3>
+      <p>
+        Prepare with examination-style questions
+        and test your readiness for WASSCE.
+      </p>
+      <a href="#subjects">Explore Predictions →</a>
+    </article>
+
+    <article class="card orange" id="quiz">
+      <div class="card-icon">🏆</div>
+      <span class="eyebrow">TEST YOUR KNOWLEDGE</span>
+      <h3>Quiz Competition</h3>
+      <p>
+        Play alone or challenge other students.
+        Improve your knowledge while competing.
+      </p>
+      <a href="#quiz-arena">Enter Quiz Arena →</a>
+    </article>
+
+    <article class="card green" id="community">
+      <div class="card-icon">👥</div>
+      <span class="eyebrow">LEARN TOGETHER</span>
+      <h3>Study Community</h3>
+      <p>
+        Connect with other learners, exchange ideas
+        and build a supportive learning community.
+      </p>
+      <a href="#community-info">Explore Community →</a>
+    </article>
+
+  </div>
+</section>
+
+<section class="section subject-section" id="subjects">
+  <span class="eyebrow">YOUR STUDY MATERIALS</span>
+  <h2>Choose Your Subject</h2>
+  <p class="section-intro">
+    Select a subject to explore available materials.
+  </p>
+
+  <div class="subjects">
+    <button class="subject">📐 Mathematics</button>
+    <button class="subject">📖 English Language</button>
+    <button class="subject">🧬 Biology</button>
+    <button class="subject">⚗️ Chemistry</button>
+    <button class="subject">🔬 Physics</button>
+    <button class="subject">📊 Economics</button>
+  </div>
+
+  <p class="info" id="subjectInfo">
+    Choose a subject to get started.
+  </p>
+</section>
+
+<section class="section quiz" id="quiz-arena">
+  <span class="eyebrow">SMART LEARN QUIZ ARENA</span>
+  <h2>Ready for a Challenge?</h2>
+  <p class="section-intro">
+    Choose how you want to test your knowledge.
+  </p>
+
+  <div class="quiz-grid">
+    <div class="quiz-card">
+      <div class="card-icon">🎯</div>
+      <h3>Solo Quiz</h3>
+      <p>Practice independently and improve your scores.</p>
+      <button class="primary" id="soloBtn">Play Solo</button>
+    </div>
+
+    <div class="quiz-card">
+      <div class="card-icon">⚔️</div>
+      <h3>Online Competition</h3>
+      <p>Challenge friends or compete with other learners.</p>
+      <button class="primary" id="battleBtn">Find Opponent</button>
+    </div>
+  </div>
+
+  <p class="info" id="quizInfo"></p>
+</section>
+
+<section class="section community" id="community-info">
+  <span class="eyebrow">OUR STUDY COMMUNITY</span>
+  <div class="card-icon">🌍</div>
+  <h2>Learning Is Better Together</h2>
+  <p>
+    Connect with fellow students, exchange knowledge,
+    discuss difficult topics and encourage one another.
+    Your learning journey doesn't have to be lonely.
+  </p>
+  <a href="#home" class="primary">Discover Smart Learn</a>
+</section>
+
+<section class="cta">
+  <h2>Your Success Story Starts Today.</h2>
+  <p>Build your knowledge, one question at a time.</p>
+  <a href="#learning" class="primary">Start Exploring</a>
+</section>
+
+<footer>
+  <a href="#" class="logo">SMART<span>LEARN</span></a>
+  <p>Learn. Practice. Compete. Succeed.</p>
+  <p>© 2026 Smart Learn. All rights reserved.</p>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+menuBtn.addEventListener("click", function() {
+  nav.classList.toggle("show");
+});
+
+document.querySelectorAll("nav a").forEach(function(link) {
+  link.addEventListener("click", function() {
+    nav.classList.remove("show");
+  });
+});
+
+document.querySelectorAll(".subject").forEach(function(button) {
+  button.addEventListener("click", function() {
+    document.getElementById("subjectInfo").textContent =
+      button.textContent.trim() +
+      " selected! Learning materials will be added here.";
+  });
+});
+
+document.getElementById("soloBtn").addEventListener("click", function() {
+  document.getElementById("quizInfo").textContent =
+    "Solo quiz selected! We will build the question system next.";
+});
+
+document.getElementById("battleBtn").addEventListener("click", function() {
+  document.getElementById("quizInfo").textContent =
+    "Online competition is coming soon! The multiplayer system will be built next.";
+});
+</script>
+<section id="smart-learn-ai">
+  <div class="ai-container">
+    <h2>🤖 Smart Learn AI</h2>
+    <p>Your personal AI study assistant.</p>
+
+    <select id="aiSubject">
+      <option value="">Choose a subject</option>
+      <option>Mathematics</option>
+      <option>English</option>
+      <option>Biology</option>
+      <option>Chemistry</option>
+      <option>Physics</option>
+      <option>Economics</option>
+    </select>
+
+    <div id="aiChat">
+      <p><strong>Smart Learn AI:</strong> Hello! What would you like to learn today?</p>
+    </div>
+
+    <textarea id="aiQuestion"
+      placeholder="Ask me a school question..."></textarea>
+
+    <button onclick="sendAIQuestion()">Ask Smart Learn AI</button>
+  </div>
+</section>
+<script>
+function sendAIQuestion() {
+  const question = document.getElementById("aiQuestion").value.trim();
+  const subject = document.getElementById("aiSubject").value;
+  const chat = document.getElementById("aiChat");
+
+  if (!question) {
+    alert("Please enter a question first.");
+    return;
+  }
+
+  if (!subject) {
+    alert("Please choose a subject.");
+    return;
+  }
+
+  const message = document.createElement("p");
+  message.innerHTML = "<strong>You:</strong> " +
+    question.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  chat.appendChild(message);
+
+  const reply = document.createElement("p");
+  reply.innerHTML = "<strong>Smart Learn AI:</strong> Your question has been received! The real AI connection will be added next.";
+
+  chat.appendChild(reply);
+
+  document.getElementById("aiQuestion").value = "";
+}
+</script>
+</body>
+</html>
